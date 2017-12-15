@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <h4 data-toggle="tooltip" data-placement="top" title="Go Back to Main Menu">{{pageTitle}} |
+    <button class="btn btn-link btn-lg">
+      <a [routerLink]="[ '/home']">Main Menu
+        <i class="fa fa-home fa-lg"></i>
+      </a>
+    </button>
+  </h4>
+  <hr>
+</div>
+<div class="panel p-2">
+
+  <div class="panel-body ">
+    <div class="row">
+
+      <div class="col">
+        <input type="text" [(ngModel)]='listFilter' placeholder=' &#xf002; Filter Results' style="font-family:Arial, FontAwesome; height:38px;"
+          data-toggle="tooltip" data-placement="top" title="Filter Results">
+        <button (click)='toggle()' type="button" class="btn btn-success btn-md" data-toggle="tooltip" data-placement="top" title="Add New Entry">
+          <i class="fa fa-plus-square fa-lg"></i>
+        </button>
+
+
+
+      </div>
+      <div class="table-responsive p-2">
+
+        <table class="table" *ngIf="filteredProducts && filteredProducts.length">
+          <caption>Results: {{products.length}}</caption>
+          <thead>
+            <tr>
+
+              <th hidden>
+
+              </th>
+              <th>Member Code</th>
+              <th>Procedure Code</th>
+              <th>Product Code</th>
+              <th>Action</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of filteredProducts">
+              <td hidden>{{product.id}}</td>
+              <td>{{product.memberCode}}</td>
+              <td>{{product.procedureCode}}</td>
+              <td>{{product.productCode}}</td>
+              <td>
+                <button class="btn btn-info btn-sm" (click)='updateEntry(product.id)' data-toggle="tooltip" data-placement="top"
+                  title="Update Entry">
+                  <i class="fa fa-pencil-square fa-lg"></i>
+                </button>
+                <button class="btn btn-danger btn-sm" (click)='removeEntry(product.id)' data-toggle="tooltip" data-placement="top"
+                  title="Delete Entry">
+                  <i class="fa fa-remove fa-lg"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <pm-product-form></pm-product-form>
+      
+    </div>
+  </div>

@@ -1,0 +1,68 @@
+<form class="form-horizontal" (ngSubmit)="save()" [formGroup]="productForm">
+  <fieldset>
+    <div class="form-group" [ngClass]="{'has-error': productForm.get('memberCode') }">
+      <label class="col-md-2 control-label" for="memberCodeId">Member Code</label>
+
+      <div class="col-md-8">
+        <input class="form-control" id="memberCodeId" type="text" maxlength="4" placeholder="Member Code (required)" formControlName="memberCode"
+        />
+        <span class="help-block text-danger" *ngIf="(productForm.get('memberCode').touched || productForm.get('memberCode').dirty) && productForm.get('memberCode').errors">
+          <span *ngIf="productForm.get('memberCode').errors.required">
+            Member Code is required!
+          </span>
+          <span *ngIf="productForm.get('memberCode').errors.minlength">
+            Member Code must be 4 characters long!
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': productForm.get('procedureCode') }">
+      <label class="col-md-2 control-label" for="procedureCodeId">Procedure Code</label>
+
+      <div class="col-md-8">
+        <input class="form-control" id="procedureCodeId" type="text" maxlength="8" placeholder="Procedure Code (required)" formControlName="procedureCode"
+        />
+        <span class="help-block text-danger" *ngIf="(productForm.get('procedureCode').touched || productForm.get('procedureCode').dirty) && productForm.get('procedureCode').errors">
+          <span *ngIf="productForm.get('procedureCode').errors.required">
+            Procedure Code is required!
+          </span>
+          <!--   <span *ngIf="productForm.get('procedureCode').errors.minlength"> 
+               Member Code must be 4 characters long! 
+             </span> -->
+        </span>
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': !productForm.get('productCode').valid }">
+      <label class="col-md-2 control-label" for="productCodeId">Product Code</label>
+
+      <div class="col-md-8">
+        <input class="form-control" id="productCodeId" type="text" maxlength="4" placeholder="Product Code (required)" formControlName="productCode"
+        />
+        <span class="help-block" *ngIf="(productForm.get('productCode').touched || productForm.get('productCode').dirty) && productForm.get('productCode').errors">
+          <span *ngIf="productForm.get('productCode').errors.required">
+            Product Code is required!
+          </span>
+          <!--   <span *ngIf="productForm.get('procedureCode').errors.minlength"> 
+               Member Code must be 4 characters long! 
+             </span> -->
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <span>
+          <button class="btn btn-primary" type="submit" style="width:80px;margin-right:10px" [disabled]='!productForm.valid'>
+            Save
+          </button>
+        </span>
+        <span>
+          <a class="btn btn-secondary" style="width:80px" [routerLink]="['/products']">
+            Cancel
+          </a>
+        </span>
+        
+      </div>
+    </div>
+  </fieldset>
+</form>

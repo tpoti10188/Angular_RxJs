@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "memberCode": "INDI",
+      "procedureCode": "BOB",
+      "productCode": "Scott"
+    },
+    {
+      "id": 2,
+      "memberCode": "INDI",
+      "procedureCode": "Sheena",
+      "productCode": "Carson"
+    },
+    {
+      "id": 3,
+      "memberCode": "INDI",
+      "procedureCode": "Obama",
+      "productCode": "Trump"
+    }
+  ]
